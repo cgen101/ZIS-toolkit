@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.io import wavfile
+import soundfile as sf
 
 def generate_audio(duration, fs, noise_levels):
     t = np.linspace(0, duration, int(fs * duration), endpoint=False)
@@ -8,7 +8,7 @@ def generate_audio(duration, fs, noise_levels):
     return ambient_noise
 
 def save_audio(audio_data, output_file, fs):
-    wavfile.write(output_file, fs, (audio_data * 32767).astype(np.int16))
+    sf.write(output_file, audio_data, fs)
 
 def get_user_choice():
     while True:
@@ -23,16 +23,16 @@ def get_user_choice():
             print("Invalid choice. Please enter 1 or 2.")
 
     if choice == '1':
-        car_state_1 = input("Enter car state for the first file (city/highway/idle): ").lower()
-        file_name_1 = f"non_colocated_{car_state_1}.wav"
         duration = int(input("Enter sample duration (in seconds): "))
+        car_state_1 = input("Enter car state for the first file (city/highway/idle): ").lower()
+        file_name_1 = f"non_colocated_{car_state_1}.flac"
 
         return file_name_1, duration
 
     elif choice == '2':
-        car_state_1 = input("Enter car state for the colocated file (city/highway/idle): ").lower()
-        file_name_1 = f"colocated_{car_state_1}.wav"
         duration = int(input("Enter sample duration (in seconds): "))
+        car_state_1 = input("Enter car state for the colocated file (city/highway/idle): ").lower()
+        file_name_1 = f"colocated_{car_state_1}.flac"
 
         return file_name_1, duration
 
@@ -92,17 +92,17 @@ ambient_noise_1 /= np.max(np.abs(ambient_noise_1))
 
 # Save the first audio to a .wav file
 output_file_1 = file_name_1
-wavfile.write(output_file_1, fs, (ambient_noise_1 * 32767).astype(np.int16))
+save_audio((ambient_noise_1 * 32767).astype(np.int16), output_file_1, fs)
 
 print(f"First ambient audio saved to {output_file_1}")
 
 # Generate the second audio based on the same user choice
 if "non_colocated" in file_name_1:
     car_state_2 = input("Enter car state for the second file (city/highway/idle): ").lower()
-    file_name_2 = f"non_colocated_{car_state_2}_2.wav"
+    file_name_2 = f"non_colocated_{car_state_2}_2.flac"
 else:
     car_state_2 = car_state_1
-    file_name_2 = f"colocated_{car_state_2}_2.wav"
+    file_name_2 = f"colocated_{car_state_2}_2.flac"
 
 # Generate car engine noise based on user's choice
 if "non_colocated" in file_name_2:
@@ -148,6 +148,6 @@ ambient_noise_2 /= np.max(np.abs(ambient_noise_2))
 
 # Save the second audio to a .wav file
 output_file_2 = file_name_2
-wavfile.write(output_file_2, fs, (ambient_noise_2 * 32767).astype(np.int16))
+save_audio((ambient_noise_2 * 32767).astype(np.int16), output_file_2, fs)
 
 print(f"Second ambient audio saved to {output_file_2}")

@@ -21,6 +21,7 @@ if (columns > rows)
 end
 
 % Compute total energy of a signal
+signal = double(signal);
 signalEnergy = signal' * signal;
 
 % Get the number of audio channels, i.e. distinct audio signals

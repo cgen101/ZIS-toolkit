@@ -40,7 +40,7 @@ def get_user_choice():
 file_name_1, duration = get_user_choice()
 
 # Define parameters
-fs = 44100  # Sampling frequency (44.1 kHz)
+fs = 16000  # Sampling frequency (16 kHz)
 
 # Generate time vector
 t = np.linspace(0, duration, int(fs * duration), endpoint=False)

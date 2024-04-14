@@ -30,8 +30,14 @@ function newAudioJob(filePath1, filePath2, expPath)
     [maxCorr, ~] = maxCrossCorrelation(S1, S2);
 
     % Save results to JSON without storing the lag
-    result = struct('crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
-    saveJsonFile('cross_correlation_result.json', result);
+    % Save results to JSON without storing the lag
+    if exist('cross_correlation_result.json', 'file') == 2
+        fprintf('"%s" already exists, writing to "cross_correlation_result_2.json".\n', 'cross_correlation_result.json');
+        result = struct('crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
+        saveJsonFile('cross_correlation_result_2.json', result);
+    else
+        result = struct('crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
+        saveJsonFile('cross_correlation_result.json', result);
     
     fprintf('Cross-correlation computation finished.\n');
     end

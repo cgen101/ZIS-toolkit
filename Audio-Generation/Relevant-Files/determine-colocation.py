@@ -9,7 +9,7 @@ with open(filePath, 'r') as json_file:
 cross_correlation = data.get('crossCorrelation', 0.0)  # Default to 0.0 if key not found
 
 # Define the threshold for colocation (you can adjust this threshold as needed)
-threshold = 0.01 # Example threshold value
+threshold = 0.011 # Example threshold value
 
 # Determine colocation status based on the threshold
 if cross_correlation >= threshold:

@@ -31,13 +31,20 @@ function newAudioJob(filePath1, filePath2, expPath)
 
     % Save results to JSON without storing the lag
     % Save results to JSON without storing the lag
-    if exist('cross_correlation_result.json', 'file') == 2
-        fprintf('"%s" already exists, writing to "cross_correlation_result_2.json".\n', 'cross_correlation_result.json');
+    resultsFolder = fullfile(expPath, 'Results');
+    if ~exist(resultsFolder, 'dir')
+        mkdir(resultsFolder);
+    end
+    
+    resultFile = fullfile(resultsFolder, 'cross_correlation_result.json');
+    if exist(resultFile, 'file') == 2
+        fprintf('"%s" already exists, writing to "cross_correlation_result_2.json".\n', resultFile);
         result = struct('crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
-        saveJsonFile('cross_correlation_result_2.json', result);
+        saveJsonFile(fullfile(resultsFolder, 'cross_correlation_result_2.json'), result);
     else
         result = struct('crossCorrelation', maxCorr, 'scriptVersion', scriptVersion);
-        saveJsonFile('cross_correlation_result.json', result);
+        saveJsonFile(resultFile, result);
+    end
     
     fprintf('Cross-correlation computation finished.\n');
     end

@@ -65,12 +65,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *'Results'* will contain json files with cross-correlation results for tests 1 and 2 upon completion 
 
 ### 6. Navigate to Relevant-Files and run determine-colocation.py 
-* To run pairing 1 with the first pair of files, change *filePath* to <your path>\Results\cross_correlation_result.json, then run the script. 
-* To run pairing 2 with the second pair of files, change *filePath* to <your path>\Results\cross_correlation_result_2.json, then run the script.
+* To run pairing 1 with the first pair of files, change *filePath* to [your path]\Results\cross_correlation_result.json, then run the script. 
+* To run pairing 2 with the second pair of files, change *filePath* to [your path]\Results\cross_correlation_result_2.json, then run the script.
 
-
-
-The results of audio feature computations were generated using *MATLAB Version: 24.1.0.2537033 (R2024a)* with the following requirements:
-```
-Signal Processing Toolbox (Version 24.1)
 

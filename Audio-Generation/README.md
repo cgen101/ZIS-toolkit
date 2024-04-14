@@ -48,6 +48,7 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 
 ### 3. Navigate to Audio-Generation directory and run *python generate.py* TWICE
 * Follow prompts in terminal to generate audio files
+* The files will be written into Audio-Generation as .flac with relevant names 
 
 ### 3. Change relevant filepaths in RunAudioJob
 * *ioPath* should be path to Relevant-Files

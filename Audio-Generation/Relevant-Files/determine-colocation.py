@@ -1,7 +1,11 @@
+# Script to determine if 2 audio files are co-located based on the max
+#   cross-correlation score.   
+
 import json
 
 # Load JSON data from the file
-filePath = r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\ZIS-toolkit\Audio-Generation\Relevant-Files\cross_correlation_result.json'
+# CHANGE FILEPATH HERE
+filePath = r'C:\Users\chlo\Documents\Spring 24\Security (CS4371)\Project\ZIS-toolkit\Audio-Generation\Relevant-Files\Results\cross_correlation_result.json'
 with open(filePath, 'r') as json_file:
     data = json.load(json_file)
 

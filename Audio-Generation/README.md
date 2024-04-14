@@ -10,7 +10,7 @@ This feature was built for the following ZIS scheme:
 
 ### Audio-Generation:
 
-#### Relevant-Files
+#### Relevant-Files:
 
 This directory contains the implementation files for SoundProof (SPF) [4] and the script to simulate a pairing.
 
@@ -32,9 +32,45 @@ This directory contains the implementation files for SoundProof (SPF) [4] and th
 * *xcorrDelay.m* - compute a delay between two discrete (audio) signals using MATLAB's xcorr function.
 * *spfFilterBank.mat* - a filter bank necessary for computing the SPF feature (regenerated if is not present in the folder). 
 
-#### generate.py - A script to generate 2 ambient audio files for the Car scenario based on user input
+#### generate.py: A script to generate 2 ambient audio files for the Car scenario based on user input
 
-The results of audio feature computations (e.g., see the [Car](https://dx.doi.org/10.5281/zenodo.2537705) scenario, other scenarios maintain the same structure) were generated under *CentOS Linux release 7.5.1804 (kernel 3.10.0-862.9.1.el7.x86_64)* using *MATLAB R2017a (9.2.0.556344) 64-bit (glnxa64)* with the following requirements:
 
+## How to use Audio Genration tool step-by-step: 
+
+### 1. Clone from https://github.com/cgen101/ZIS-toolkit
+
+### 2. Ensure you have required installations: 
+* *Python 3.12.0*
+* *numpy version 1.26.4*
+* *soundfile 0.12.1*
+* *MATLAB Version: 24.1.0.2537033 (R2024a)*
+* *Signal Processing Toolbox (Version 24.1)*
+
+### 3. Navigate to Audio-Generation directory and run *python generate.py* TWICE
+* Follow prompts in terminal to generate audio files
+
+### 3. Change relevant filepaths in RunAudioJob
+* *ioPath* should be path to Relevant-Files
+* *filePath1* should be path to first audio file for test 1
+* *filePath2* should be path to second audio file for test 1
+* *filePath3* should be path to first audio file for test 2
+* *filePath4* should be path to second audio file for test 2
+
+### 4. Open MATLAB, create a new project from file 
+* Make sure to add Audio-Generation directory with subfolders to project path 
+* Set Relevant-Files as your current folder 
+
+### 5. Run 'RunAudioJob'
+* RunAudioJob will create a subfolder in 'Relevant-Files' called *'Results'*
+* *'Results'* will contain json files with cross-correlation results for tests 1 and 2 upon completion 
+
+### 6. Navigate to Relevant-Files and run determine-colocation.py 
+* To run pairing 1 with the first pair of files, change *filePath* to <your path>\Results\cross_correlation_result.json, then run the script. 
+* To run pairing 2 with the second pair of files, change *filePath* to <your path>\Results\cross_correlation_result_2.json, then run the script.
+
+
+
+The results of audio feature computations were generated using *MATLAB Version: 24.1.0.2537033 (R2024a)* with the following requirements:
 ```
-Signal Processing Toolbox (Version 7.4)
+Signal Processing Toolbox (Version 24.1)
+

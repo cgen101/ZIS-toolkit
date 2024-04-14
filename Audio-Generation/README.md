@@ -6,28 +6,29 @@ This feature builds on the paper "Perils of Zero-Interaction Security in the Int
 This feature was built for the following ZIS scheme:
 * *SoundProof (SPF)*  [4]
 
-## File Structure 
+## File Structure
 
-To compute audio features, the following directories/files are used (a brief description is provided, see comments inside *.m* files for details):
+### Audio-Generation:
 
-## Audio-Generation:
-## Relevant-Files - Directory containing copies of implimentation files for SoundProof (SPF)  [4] and the script to simulate a pairing 
+#### Relevant-Files
 
-# Altered files to do specific work for SoundProof (SPF)*  [4]
-* *newAudioJob.m* - **a main function** altered main funtion to include only relevant work for SoundProof (SPF)*  [4]. 
-* *RunAudioJob* - a script to run newAudioJob.m twice, with 2 different pairs of files (colocated and non-colocated files), to demonstrate a pairing attempt between 2 colocated devices and 2 non-colocated devices
+This directory contains the implementation files for SoundProof (SPF) [4] and the script to simulate a pairing.
 
-# Unaltered files copied from Schmes > audio 
-* *alignTwoSignals.m* - a function to align two discrete (audio) signals. 
+# Altered files to do specific work for SoundProof (SPF) [4]
+* *newAudioJob.m* - **a main function** altered main function to include only relevant work for SoundProof (SPF) [4].
+* *RunAudioJob* - a script to run newAudioJob.m twice, with 2 different pairs of files (colocated and non-colocated files), to demonstrate a pairing attempt between 2 colocated devices and 2 non-colocated devices.
+
+# Unaltered files copied from Schemes > audio
+* *alignTwoSignals.m* - a function to align two discrete (audio) signals.
 * *computeSPF.m* - a wrapper to compute the SPF feature and store the results.
-* *loadSignal.m* - a function to load two audio signals from audio files (e.g., *.FLAC); the samplig rate in Hz is set inside the function.  
-* *maxCrossCorrelation.m* - compute maximum cross-correlation between two normalized descrete (audio) signals. 
-* *normalizeSignal.m* - energy normalization of a discrete (audio) signal. 
-* *preComputeFilterSPF.m* - precompute the SPF filter bank (produces the *spfFilterBank.mat* file). 
-* *saveJsonFile.m* - store the results of audio feature computations in a JSON file. 
-* *soundProofXcorr.m* - implementation of the SPF feature. 
-* *thirdOctaveSplitter.m* - split an audio signal into 1/3 octave bands using the *spfFilterBank.mat* filter bank.  
-* *xcorrDelay.m* - compute a delay between two discrete (audio) signals using MATLAB's *xcorr* function. 
+* *loadSignal.m* - a function to load two audio signals from audio files (e.g., *.FLAC); the sampling rate in Hz is set inside the function.
+* *maxCrossCorrelation.m* - compute maximum cross-correlation between two normalized discrete (audio) signals.
+* *normalizeSignal.m* - energy normalization of a discrete (audio) signal.
+* *preComputeFilterSPF.m* - precompute the SPF filter bank (produces the spfFilterBank.mat file).
+* *saveJsonFile.m* - store the results of audio feature computations in a JSON file.
+* *soundProofXcorr.m* - implementation of the SPF feature.
+* *thirdOctaveSplitter.m* - split an audio signal into 1/3 octave bands using the spfFilterBank.mat filter bank.
+* *xcorrDelay.m* - compute a delay between two discrete (audio) signals using MATLAB's xcorr function.
 * *spfFilterBank.mat* - a filter bank necessary for computing the SPF feature (regenerated if is not present in the folder). 
 
 The results of audio feature computations (e.g., see the [Car](https://dx.doi.org/10.5281/zenodo.2537705) scenario, other scenarios maintain the same structure) were generated under *CentOS Linux release 7.5.1804 (kernel 3.10.0-862.9.1.el7.x86_64)* using *MATLAB R2017a (9.2.0.556344) 64-bit (glnxa64)* with the following requirements:
